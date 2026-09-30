@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+.venv
+
+# Environment & Cookies
+.env
+cookies/*.json
+!cookies/linkedin_cookies.json.example
+
+# Output data & Reports
+output/
+TECHNICAL_REPORT.md
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+temp/

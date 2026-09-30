@@ -1,0 +1,11 @@
+[
+  {
+    "name": "li_at",
+    "value": "YOUR_LI_AT_COOKIE_VALUE_HERE",
+    "domain": ".www.linkedin.com",
+    "path": "/",
+    "httpOnly": true,
+    "secure": true,
+    "sameSite": "None"
+  }
+]
