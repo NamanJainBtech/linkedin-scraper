@@ -16,7 +16,6 @@ cookies/*.json
 
 # Output data & Reports
 output/
-TECHNICAL_REPORT.md
 
 # IDE & OS
 .vscode/

@@ -37,11 +37,16 @@ A production-grade, highly resilient LinkedIn profile extraction pipeline built 
 ### Step 1: Clone Repository & Create Virtual Environment
 ```bash
 git clone <repository_url>
-cd profile-extractor
+cd scrapper
 
 # Create and activate virtual environment
-python3 -m venv venv
-source venv/bin/activate
+python -m venv venv
+
+# Activate on Windows:
+venv\Scripts\activate
+
+# Activate on macOS / Linux:
+# source venv/bin/activate
 ```
 
 ### Step 2: Install Python Dependencies & Playwright Browsers
@@ -58,7 +63,7 @@ cp .env.example .env
 Edit `.env` and configure your API key if using Mode B Scale Mode:
 ```env
 BRIGHTDATA_API_KEY=your_brightdata_api_key_here
-BRIGHTDATA_DATASET_ID=gd_l1vtw10a109zbbf64
+BRIGHTDATA_DATASET_ID=gd_l1viktl72bvl7bjuj0
 ```
 
 ### Step 4: Configure LinkedIn Session Cookies (For Cookie Mode & Hybrid Modals)
@@ -72,7 +77,7 @@ Export your valid logged-in LinkedIn session cookies (at least `li_at`) into `co
   {
     "name": "li_at",
     "value": "YOUR_ACTUAL_LI_AT_COOKIE_VALUE_HERE",
-    "domain": ".linkedin.com",
+    "domain": ".www.linkedin.com",
     "path": "/",
     "httpOnly": true,
     "secure": true,
@@ -148,6 +153,8 @@ python main.py --input data/sample_urls.txt --limit 1 --debug-html
   avg_seconds_per_profile  : 14.58
 ==================================================
 ```
+
+> **Note:** Mode B records 0 successes and 10 partials in this benchmark run because the test profiles did not expose the "About This Member" modal (Section 2B) due to account privacy settings. This is expected behaviour — the pipeline completed without errors (`failures: 0`), gracefully recording `errors[]` for the missing modal data. On profiles where the modal is publicly accessible, these records will be classified as `success`.
 
 ---
 
